@@ -7,7 +7,7 @@ const post: Post = {
     title: 'Second Post',
     description: 'Another well written description',
     tags: ['Tutorial', 'Web Development'],
-    thumbnail: 'https://picsum.photos/155/105',
+    thumbnail: '/thumbnails/post2.jpeg',
     content: `
 # Primo ille nec nec sua male tetigere
 

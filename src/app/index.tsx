@@ -8,6 +8,9 @@ import { Link } from "expo-router";
 export default function Page() {
   const [allPosts, setAllPosts] = useState<Post[]>(getAllPosts())
 
+
+//Set up EAS updates to not have to always rebuild the project when writing new posts.
+
   return (
     <View style={styles.container}>
       <View style={styles.main}>
@@ -18,6 +21,7 @@ export default function Page() {
               <View style={styles.postItem}>
                 <LoadingImage
                   style={styles.postItemThumbnail}
+                  alt={item.title}
                   source={{ uri: item.thumbnail }}
                   resizeMode="cover"
                   activityIndicatorSize={'large'}

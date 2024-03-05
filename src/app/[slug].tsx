@@ -4,14 +4,16 @@ import { Stack, useLocalSearchParams } from 'expo-router'
 import { Post } from '../types/post'
 import { getAllPosts, getPost } from '../repositories/postRepository'
 import Markdown from 'react-native-markdown-display';
-
+import Head from 'expo-router/head';
+import LoadingImage from '../../components/LoadingImage'
+import { BASE_URL } from '../config'
 
 export async function generateStaticParams(): Promise<Record<string, string>[]> {
     const posts = getAllPosts();
     // Return an array of params to generate static HTML files for.
     // Each entry in the array will be a new page.
     return posts.map(post => ({ slug: post.slug }));
-  }
+}
 
 
 export default function PostPage() {
@@ -23,14 +25,47 @@ export default function PostPage() {
     }
 
 
+
+    const rules = {
+        heading1: (node:any, children:any, parent:any, styles:any) =>
+          <Text key={node.key} style={[styles.heading, styles.heading1]}>
+            {children}
+          </Text>,
+        heading2: (node:any, children:any, parent:any, styles:any) =>
+          <Text key={node.key} style={[styles.heading, styles.heading2]}>
+           {children}
+          </Text>,
+        heading3: (node:any, children:any, parent:any, styles:any) =>
+          <Text key={node.key} style={[styles.heading, styles.heading3]}>
+           {children}
+          </Text>,
+    };
+    
+
+
     return (
-        <ScrollView style={{flex:1, backgroundColor:'white'}} contentContainerStyle={styles.page}>
-            <Stack.Screen options={{ title: post.title }} />
-            <Text style={styles.title}>{post.title}</Text>
-            <Markdown>
-                {post.content}
-            </Markdown>
-        </ScrollView>
+        <>
+            <Head>
+                <title>{post.title}</title>
+                <meta name="description" content={post.description} />
+                <meta property="og:image" content={`${BASE_URL}${post.thumbnail}`} />
+            </Head>
+
+            <ScrollView style={{ flex: 1, backgroundColor: 'white' }} contentContainerStyle={styles.page}>
+                <Stack.Screen options={{ title: post.title }} />
+                <Text style={styles.title}>{post.title}</Text>
+                <LoadingImage
+                    source={{ uri: `${BASE_URL}${post.thumbnail}` }}
+                    alt={post.title}
+                    style={{ width: '100%', aspectRatio: 16 / 9 }}
+                />
+                <Markdown
+                    rules={rules}
+                >
+                    {post.content}
+                </Markdown>
+            </ScrollView>
+        </>
     )
 }
 

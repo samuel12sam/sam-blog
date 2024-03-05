@@ -7,7 +7,7 @@ const post: Post = {
     title: 'My First Post!',
     description:'This is the description of first post',
     tags:['Tutorial', 'Web Development'],
-    thumbnail:'https://picsum.photos/150/100',
+    thumbnail:'/thumbnails/post1.jpeg',
     content: `
 # Sole sed his aliquem deduci timor damus
 

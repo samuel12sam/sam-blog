@@ -7,7 +7,7 @@ const post: Post = {
     title: 'Third Post',
     description:'Another well written description',
     tags:['Tutorial', 'Web Development'],
-    thumbnail:'https://picsum.photos/250/125',
+    thumbnail:'/thumbnails/post3.jpeg',
     content: `
 # Sunt erat verus undis Achaidas
 
@@ -18,18 +18,13 @@ Spina stagna, [ancora patrium](http://sede-dis.net/sol) est mansit Delphice
 confessaque ineo canitiemque! Aiax opertum, seminaque iunxit soleat, est colebat
 virique. Blandis pavens cur et numero, vestrum contemptaque collo redeuntibus
 aede mens, sed. Fer uni: de nihil, sacra quos illi Pallada.
+\`\`\`javascript
+var foo = function (bar) {
+    return bar++;
+  };
 
-    if (syntax_username) {
-        market += hexadecimal_meta;
-    } else {
-        flashSoaDocument = adf_grayscale(static(pda), exbibyteVirus,
-                dataMacro.pum_ole_api.clock(hdtvCps, supplyFormula, 3));
-        addressCopyWarm = pharming_dot * integratedBloatwareWavelength;
-    }
-    san += ccd + 1 + bezel;
-    var ip_dv = link * 5;
-    optic.smbArpRuby += serverGate(4, key_bounce_port);
-
+  console.log(foo(5));
+\`\`\`
 ## Per carmen intrata iram
 
 Una [sit](http://www.artus-an.com/) currus, nantis. Erat ait fulgura acumine
