@@ -18,13 +18,24 @@ Spina stagna, [ancora patrium](http://sede-dis.net/sol) est mansit Delphice
 confessaque ineo canitiemque! Aiax opertum, seminaque iunxit soleat, est colebat
 virique. Blandis pavens cur et numero, vestrum contemptaque collo redeuntibus
 aede mens, sed. Fer uni: de nihil, sacra quos illi Pallada.
-\`\`\`javascript
-var foo = function (bar) {
-    return bar++;
-  };
 
-  console.log(foo(5));
+\`\`\`tsx
+import { View, Text } from "react-native"
+
+/*This is an extremely long comment that i've written to see what happens if this goes on and on and on and on!*/
+
+export default myApp() { 
+    
+    const hey = 'yoyo'
+
+    return(
+        <View>
+            <Text>{hey}</Text>
+        </View>
+    )
+}
 \`\`\`
+
 ## Per carmen intrata iram
 
 Una [sit](http://www.artus-an.com/) currus, nantis. Erat ait fulgura acumine
