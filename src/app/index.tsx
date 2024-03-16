@@ -1,33 +1,38 @@
 import { useState } from "react";
-import { Dimensions, FlatList, StyleSheet, Text, View } from "react-native";
+import { Dimensions, FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { getAllPosts } from "../repositories/postRepository";
 import { Post } from "../types/post";
 import LoadingImage from "../../components/LoadingImage";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
+import { BASE_URL } from "../config";
 
 export default function Page() {
   const [allPosts, setAllPosts] = useState<Post[]>(getAllPosts())
-
+  const router = useRouter()
 
 //Set up EAS updates to not have to always rebuild the project when writing new posts.
 
   return (
     <View style={styles.container}>
       <View style={styles.main}>
+        {/* <LoadingImage 
+          alt="randomImage"
+          source={{uri:`https://www.investopedia.com/thmb/CSgAqzy4W_nUzZhrsJJOePDJ92k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/hmo.asp-Final-9f9b68a2060f44c2b28782a83e14764a.jpg`}}
+        /> */}
         <FlatList
           data={allPosts}
           renderItem={({ item }) => {
             return (
-              <View style={styles.postItem}>
+              <Pressable style={styles.postItem} onPress={()=>router.navigate(`${BASE_URL}${item.slug}`)}>
                 <LoadingImage
                   style={styles.postItemThumbnail}
                   alt={item.title}
-                  source={{ uri: item.thumbnail }}
+                  source={{ uri: `${item.thumbnail}` }}
                   resizeMode="cover"
                   activityIndicatorSize={'large'}
                 />
                 <View style={styles.postItemInfo}>
-                  <Link href={`${item.slug}`} style={styles.postItemTitle}>{item.title}</Link>
+                  <Text style={styles.postItemTitle}>{item.title}</Text>
                   <Text numberOfLines={3} style={styles.postItemDescription}>{item.description}</Text>
                   <View style={styles.postItemTags}>{item.tags.map((tag, index) =>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }} key={`${tag}-Index${index}`}>
@@ -38,7 +43,7 @@ export default function Page() {
                   </View>
                   <Text style={styles.date}>{item.date}</Text>
                 </View>
-              </View>
+              </Pressable>
             )
           }}
         />

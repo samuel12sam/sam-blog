@@ -1,4 +1,4 @@
-import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Image, Platform, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import { Stack, useLocalSearchParams } from 'expo-router'
 import { Post } from '../types/post'

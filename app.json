@@ -28,15 +28,21 @@
       "favicon": "./assets/favicon.png",
       "bundler": "metro",
       //USED FOR STATIC WEBSITE
-      "output":"static"
+      "output": "static"
     },
     "plugins": [
       // CHANGE ORIGIN TO ACTUAL HOSTED URL
-      ["expo-router", {"origin":"http://localhost:8081/"}]
-    ],
-    //USED THIS TO HOST IT ON GITHUB PAGES, BUT ITS NOT WORKING TOO WELL
-    "experiments": {
-      "baseUrl": "/sam-blog"
-    }
+      [
+        "expo-router",
+        {
+          "origin": "https://samuel12sam.github.io/sam-blog/"
+        }
+      ]
+    ]
+    // ,
+    // //USED THIS TO HOST IT ON GITHUB PAGES, BUT ITS NOT WORKING TOO WELL
+    // "experiments": {
+    //   "baseUrl": "/sam-blog"
+    // }
   }
 }
